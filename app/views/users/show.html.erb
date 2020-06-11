@@ -1,8 +1,35 @@
 <section class="user-section">
 	<h2><%= "Name: #{@user.name}" %></h2>
-	<% if current_user != @user %>
-	<%= link_to 'Invite to friendship',  invite_path(:friend_id => @user.id), class: 'profile-link' %>
+	<% if current_user.pending_friends.include?(@user) %>
+	<em>frienship pending</em>
+	<% elsif current_user.my_friends.include?(@user) %>
+	<em>friend</em>
+	<% elsif current_user != @user %>
+	<%= link_to 'Invite to friendship',  invite_path(friend_id: user.id) %>
 	<% end %>
+<br>
+<br>
+	<% if current_user == @user %>
+<h3>Friend Requests: </h3>
+<br>
+	<% @friend_requests.each do |request| %>
+			<ul>
+				<li>
+					<%= request.name %>
+				</li>
+			</ul>
+			<em>
+			<%= link_to "Accept", accept_path(request, friendship: {state: "confirmed"}) %> | 
+			<%= link_to "Reject"  %>
+			</em>
+	<% end %>
+	<% end %>
+
+
+
+
+
+<br>
 	<article class="timeline">
 		<h3>Recent posts:</h3>
 		<ul class="posts">
@@ -10,3 +37,5 @@
 		</ul>
 	</article>
 </section>
+
+
