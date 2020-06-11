@@ -1,9 +1,12 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
+	<h2><%= "Name: #{@user.name}" %></h2>
+	<% if current_user != @user %>
+	<%= link_to 'Invite to friendship',  invite_path(:friend_id => @user.id), class: 'profile-link' %>
+	<% end %>
+	<article class="timeline">
+		<h3>Recent posts:</h3>
+		<ul class="posts">
+			<%= render @posts %>
+		</ul>
+	</article>
 </section>
