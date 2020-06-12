@@ -5,7 +5,7 @@
 	<% elsif current_user.my_friends.include?(@user) %>
 	<em>friend</em>
 	<% elsif current_user != @user %>
-	<%= link_to 'Invite to friendship',  invite_path(friend_id: user.id) %>
+	<%= link_to 'Invite to friendship',  invite_path(friend_id: @user.id) %>
 	<% end %>
 <br>
 <br>
@@ -18,10 +18,27 @@
 					<%= request.name %>
 				</li>
 			</ul>
+			<%# if friend?(request) %>
 			<em>
 			<%= link_to "Accept", accept_path(request, friendship: {state: "confirmed"}) %> | 
-			<%= link_to "Reject"  %>
+			<%= link_to "Reject", reject_path(request.id), method: :delete %>
 			</em>
+		<%# end %>
+	<% end %>
+<br>
+<br>
+<h3>My Friends: </h3>
+	<br>
+	<% @my_friends.each do |friend| %>
+			<ul>
+				<li>
+					<%= friend.name %> - 
+					<em>
+					<%= link_to "Remove Friend", reject_path(friend.id), method: :delete, data: {confirm: "Are you sure?"} %>
+					</em>		
+				</li>
+			</ul>
+			
 	<% end %>
 	<% end %>
 
