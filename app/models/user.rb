@@ -30,7 +30,7 @@ class User < ApplicationRecord
 
   def confirm_friend(user)
     friendship = friends.find{|friendship| friendship.user == user}
-    friendship.confirmed = true
+    friendship.state = "confirmed"
     friendship.save
   end
 
