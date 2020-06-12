@@ -13,5 +13,4 @@ Rails.application.routes.draw do
   get :invite, to: "users#invite", as: 'invite'
   get "accept/:id", to: "users#accept", as: 'accept'
   delete "reject/:id", to: "users#reject", as: 'reject'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

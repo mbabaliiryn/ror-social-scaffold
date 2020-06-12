@@ -7,46 +7,39 @@
 	<% elsif current_user != @user %>
 	<%= link_to 'Invite to friendship',  invite_path(friend_id: @user.id) %>
 	<% end %>
-<br>
-<br>
+	<br>
+	<br>
 	<% if current_user == @user %>
-<h3>Friend Requests: </h3>
-<br>
+	<h3>Friend Requests: </h3>
+	<br>
 	<% @friend_requests.each do |request| %>
-			<ul>
-				<li>
-					<%= request.name %>
-				</li>
-			</ul>
-			<%# if friend?(request) %>
-			<em>
-			<%= link_to "Accept", accept_path(request, friendship: {state: "confirmed"}) %> | 
-			<%= link_to "Reject", reject_path(request.id), method: :delete %>
-			</em>
-		<%# end %>
+	<ul>
+		<li>
+			<%= request.name %>
+		</li>
+	</ul>
+	<em>
+		<%= link_to "Accept", accept_path(request, friendship: {state: "confirmed"}) %> | 
+		<%= link_to "Reject", reject_path(request.id), method: :delete %>
+	</em>
 	<% end %>
-<br>
-<br>
-<h3>My Friends: </h3>
+	<br>
+	<br>
+	<h3>My Friends: </h3>
 	<br>
 	<% @my_friends.each do |friend| %>
-			<ul>
-				<li>
-					<%= friend.name %> - 
-					<em>
-					<%= link_to "Remove Friend", reject_path(friend.id), method: :delete, data: {confirm: "Are you sure?"} %>
-					</em>		
-				</li>
-			</ul>
-			
+	<ul>
+		<li>
+			<%= friend.name %> - 
+			<em>
+				<%= link_to "Remove Friend", reject_path(friend.id), method: :delete %>
+			</em>		
+		</li>
+	</ul>
 	<% end %>
 	<% end %>
 
-
-
-
-
-<br>
+	<br>
 	<article class="timeline">
 		<h3>Recent posts:</h3>
 		<ul class="posts">
