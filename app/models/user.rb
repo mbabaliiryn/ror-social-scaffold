@@ -7,8 +7,8 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
 
   has_many :posts
-  has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_many :comments
+  has_many :likes
   has_many :friendships
   has_many :friends, class_name: :Friendship, foreign_key: :friend_id
 
@@ -27,15 +27,4 @@ class User < ApplicationRecord
   def friend_requests
     friends.map{|friendship| friendship.user if friendship.state == "pending"}.compact
   end
-
-  def confirm_friend(user)
-    friendship = friends.find{|friendship| friendship.user == user}
-    friendship.state = "confirmed"
-    friendship.save
-  end
-
-  def friend?(user)
-    my_friends.include?(user)
-  end
-
 end
