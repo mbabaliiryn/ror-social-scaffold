@@ -43,10 +43,13 @@ group :development, :test do
   gem 'hirb'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'factory_bot_rails', '~> 5.2'
 end
 
 group :test do
-  gem 'rspec'
+  gem 'shoulda-matchers'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem 'launchy'
 end
 
 group :development do
