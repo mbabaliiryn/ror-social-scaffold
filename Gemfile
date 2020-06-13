@@ -41,6 +41,8 @@ gem 'devise'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'hirb'
+  gem 'rspec-rails'
+  gem 'capybara'
 end
 
 group :test do
