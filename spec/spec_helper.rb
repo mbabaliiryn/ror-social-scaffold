@@ -94,3 +94,25 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def create_user(name, email, password, password_confirmation)
+  visit new_user_registration_path
+  fill_in 'name', with: name
+  fill_in 'email', with: email
+  fill_in 'password', with: password
+  fill_in 'password_confirmation', with: password_confirmation
+  click_button 'Sign up'
+end
+
+def login_user(email, password)
+  visit new_user_session_path
+  fill_in 'email', with: email
+  fill_in 'password', with: password
+  click_button 'Log in'
+end
+
+def create_post(content)
+  visit posts_path
+  find('#post_content').set(content)
+  click_on 'Save'
+end
