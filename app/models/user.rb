@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, length: { maximum: 20 }
 
@@ -13,18 +13,18 @@ class User < ApplicationRecord
   has_many :friends, class_name: :Friendship, foreign_key: :friend_id
 
   def my_friends
-    friends_array = friendships.map{|friendship| friendship.friend if friendship.state == "confirmed"}
-    friends_array + friends.map{|friendship| friendship.user if friendship.state == "confirmed"}
+    friends_array = friendships.map { |friendship| friendship.friend if friendship.state == 'confirmed' }
+    friends_array + friends.map { |friendship| friendship.user if friendship.state == 'confirmed' } # rubocop:disable Lint/Void
     friends_array.compact
   end
 
   # Users who have yet to confirm friend requests
   def pending_friends
-    friendships.map{|friendship| friendship.friend if friendship.state == "pending"}.compact
+    friendships.map { |friendship| friendship.friend if friendship.state == 'pending' }.compact
   end
 
   # Users who have requested to be friends
   def friend_requests
-    friends.map{|friendship| friendship.user if friendship.state == "pending"}.compact
+    friends.map { |friendship| friendship.user if friendship.state == 'pending' }.compact
   end
 end

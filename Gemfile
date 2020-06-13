@@ -40,16 +40,16 @@ gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'hirb'
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_bot_rails', '~> 5.2'
+  gem 'hirb'
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem 'shoulda-matchers'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'launchy'
+  gem 'shoulda-matchers'
 end
 
 group :development do
