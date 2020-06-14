@@ -12,7 +12,7 @@
           <% elsif current_user.my_friends.include?(user) %>
           <em>friend</em>
           <% elsif current_user != user %>
-          <%= link_to 'Invite to friendship', invite_path(friend_id: user.id), class: "invite" %>
+          <%= link_to 'Invite to friendship', invite_path(friend_id: user.id), class: "invite accept" %>
           <% end %>
         </span>
       </li>

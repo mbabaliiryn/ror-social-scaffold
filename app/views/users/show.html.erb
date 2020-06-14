@@ -13,13 +13,13 @@
 	<h3>Friend Requests: </h3>
 	<br>
 	<% @friend_requests.each do |request| %>
-	<ul>
+	<ul class="friend-requests">
 		<li>
 			<%= request.name %> - 
-			<em>
-				<%= link_to "Accept", accept_path(request, friendship: {state: "confirmed"}) %> | 
-				<%= link_to "Reject", reject_path(request.id), method: :delete %>
-			</em>
+			<a>
+				<%= link_to "Accept", accept_path(request, friendship: {state: "confirmed"}), class: 'accept' %> | 
+				<%= link_to "Reject", reject_path(request.id), method: :delete, class: "reject" %>
+			</a>
 		</li>
 	</ul>
 	<% end %>
@@ -38,12 +38,12 @@
 	<h3>My Friends: </h3>
 	<br>
 	<% @my_friends.each do |friend| %>
-	<ul>
+	<ul class="friend-requests">
 		<li>
 			<%= friend.name %> - 
-			<em>
-				<%= link_to "Remove Friend", reject_path(friend.id), method: :delete %>
-			</em>		
+			<a>
+				<%= link_to "Remove", reject_path(friend.id), method: :delete, class: "reject" %>
+			</a>		
 		</li>
 	</ul>
 	<% end %>
