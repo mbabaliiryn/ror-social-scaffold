@@ -1,7 +1,7 @@
 <section class="user-section">
 	<h2><%= "Name: #{@user.name}" %></h2>
 	<% if current_user.pending_friends.include?(@user) %>
-	<em>frienship pending</em>
+	<em class="request-link">Request Sent</em>
 	<% elsif current_user.my_friends.include?(@user) %>
 	<em>friend</em>
 	<% elsif current_user != @user %>
@@ -26,8 +26,8 @@
 	<% @pending_friends.each do |request| %>
 		<ul>
 		<li>
-			<%= request.name %> - <em>
-		request sent
+			<%= request.name %> - <em class="request-link">
+		Request Sent
 	</em>
 		</li>
 	</ul>

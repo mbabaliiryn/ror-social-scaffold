@@ -4,11 +4,11 @@
       <% @users.each do |user| %>
       <li>
       <% if current_user != user %>
-        Name: <%= user.name %>
+        Name: <strong><%= user.name %> </strong>- 
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
           <% if current_user.pending_friends.include?(user) %>
-          <em>frienship pending</em>
+          <em>Request Sent</em>
           <% elsif current_user.my_friends.include?(user) %>
           <em>friend</em>
           <% elsif current_user != user %>
