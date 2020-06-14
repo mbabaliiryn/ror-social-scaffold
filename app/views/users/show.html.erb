@@ -15,13 +15,23 @@
 	<% @friend_requests.each do |request| %>
 	<ul>
 		<li>
-			<%= request.name %>
+			<%= request.name %> - 
+			<em>
+				<%= link_to "Accept", accept_path(request, friendship: {state: "confirmed"}) %> | 
+				<%= link_to "Reject", reject_path(request.id), method: :delete %>
+			</em>
 		</li>
 	</ul>
-	<em>
-		<%= link_to "Accept", accept_path(request, friendship: {state: "confirmed"}) %> | 
-		<%= link_to "Reject", reject_path(request.id), method: :delete %>
+	<% end %>
+	<% @pending_friends.each do |request| %>
+		<ul>
+		<li>
+			<%= request.name %> - <em>
+		request sent
 	</em>
+		</li>
+	</ul>
+	
 	<% end %>
 	<br>
 	<br>
