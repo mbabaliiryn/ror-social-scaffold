@@ -7,7 +7,7 @@ RSpec.feature 'Likes', type: :feature do
     end
     scenario 'can like a post' do
       login_user('greg@email.com', 'password')
-      create_post("this is a post")
+      create_post('this is a post')
       visit posts_path
       page.first('.like').click
 
@@ -17,7 +17,7 @@ RSpec.feature 'Likes', type: :feature do
 
     scenario 'can dislike a post' do
       login_user('greg@email.com', 'password')
-      create_post("this is a post")
+      create_post('this is a post')
       visit posts_path
       page.first('.like').click
       page.first('.dislike').click

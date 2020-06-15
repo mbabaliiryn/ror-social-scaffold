@@ -8,7 +8,7 @@ RSpec.feature 'Comments', type: :feature do
 
     scenario 'with valid content' do
       login_user('greg@email.com', 'password')
-      create_post("this is a post")
+      create_post('this is a post')
       visit posts_path
       page.first('#comment_content').set('this is a test comment')
       page.first('.btn-secondary').click
@@ -19,7 +19,7 @@ RSpec.feature 'Comments', type: :feature do
 
     scenario 'with invalid content' do
       login_user('greg@email.com', 'password')
-      create_post("this is a post")
+      create_post('this is a post')
       visit posts_path
       page.first('#comment_content').set(nil)
       page.first('.btn-secondary').click
