@@ -342,3 +342,25 @@ form {
     width: 50%;
   }
 }
+
+.accept {
+  background-color: $primary-color-dark;
+  color: white;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.reject {
+  background-color: red;
+  color: white;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.friend-requests {
+  margin-bottom: 10px;
+}
+
+.request-link {
+  color: $primary-color-dark;
+}

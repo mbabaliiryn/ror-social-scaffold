@@ -20,7 +20,8 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    @timeline_posts ||= Post.where(user: current_user.my_friends).or(Post.where(user: current_user)).ordered_by_most_recent # rubocop:disable Layout/LineLength
+    @timeline_posts
   end
 
   def post_params

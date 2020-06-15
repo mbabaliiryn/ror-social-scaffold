@@ -1,9 +1,58 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
+	<h2><%= "Name: #{@user.name}" %></h2>
+	<% if current_user.pending_friends.include?(@user) %>
+	<em class="request-link">Request Sent</em>
+	<% elsif current_user.my_friends.include?(@user) %>
+	<em>friend</em>
+	<% elsif current_user != @user %>
+	<%= link_to 'Invite to friendship',  invite_path(friend_id: @user.id) %>
+	<% end %>
+	<br>
+	<br>
+	<% if current_user == @user %>
+	<h3>Friend Requests: </h3>
+	<br>
+	<% @friend_requests.each do |request| %>
+	<ul class="friend-requests">
+		<li>
+			<%= request.name %> - 
+			<a>
+				<%= link_to "Accept", accept_path(request, friendship: {state: "confirmed"}), class: 'accept' %> | 
+				<%= link_to "Reject", reject_path(request.id), method: :delete, class: "reject" %>
+			</a>
+		</li>
+	</ul>
+	<% end %>
+	<% @pending_friends.each do |request| %>
+		<ul>
+		<li>
+			<%= request.name %> - <em class="request-link">
+		Request Sent
+	</em>
+		</li>
+	</ul>
+	
+	<% end %>
+	<br>
+	<br>
+	<h3>My Friends: </h3>
+	<br>
+	<% @my_friends.each do |friend| %>
+	<ul class="friend-requests">
+		<li>
+			&bull; <%= friend.name %>		
+		</li>
+	</ul>
+	<% end %>
+	<% end %>
+
+	<br>
+	<article class="timeline">
+		<h3>Recent posts:</h3>
+		<ul class="posts">
+			<%= render @posts %>
+		</ul>
+	</article>
 </section>
+
+
