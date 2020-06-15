@@ -1,22 +1,27 @@
   
-  <section class="users-section">
-    <ul class="users-list">
-      <% @users.each do |user| %>
-      <li>
+<section class="users-section">
+  <ul class="users-list">
+    <% @users.each do |user| %>
+    <li>
       <% if current_user != user %>
-        Name: <strong><%= user.name %> </strong>- 
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-          <% if current_user.pending_friends.include?(user) %>
-          <em>Request Sent</em>
-          <% elsif current_user.my_friends.include?(user) %>
-          <em>friend</em>
-          <% elsif current_user != user %>
-          <%= link_to 'Invite to friendship', invite_path(friend_id: user.id), class: "invite accept" %>
-          <% end %>
-        </span>
-      </li>
-      <% end %>
-      <% end %>
-    </ul>
-  </section>
+      Name: <strong><%= user.name %> </strong>- 
+      <span class="profile-link">
+        <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+        <% if current_user.friend_requests.include?(user) %>
+        <a>
+          <%= link_to "Accept", accept_path(user, friendship: {state: "confirmed"}), class: 'accept' %> | 
+          <%= link_to "Reject", reject_path(user.id), method: :delete, class: "reject" %>
+        </a>
+        <% elsif current_user.pending_friends.include?(user) %>
+        <em>Request Sent</em>
+        <% elsif current_user.my_friends.include?(user) %>
+        <em>friend</em>
+        <% elsif current_user != user %>
+        <%= link_to 'Invite to friendship', invite_path(friend_id: user.id), class: "invite accept" %>
+        <% end %>
+      </span>
+    </li>
+    <% end %>
+    <% end %>
+  </ul>
+</section>

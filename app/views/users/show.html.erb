@@ -40,10 +40,7 @@
 	<% @my_friends.each do |friend| %>
 	<ul class="friend-requests">
 		<li>
-			<%= friend.name %> - 
-			<a>
-				<%= link_to "Remove", reject_path(friend.id), method: :delete, class: "reject" %>
-			</a>		
+			&bull; <%= friend.name %>		
 		</li>
 	</ul>
 	<% end %>
