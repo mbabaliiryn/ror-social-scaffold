@@ -13,17 +13,17 @@ class User < ApplicationRecord
   has_many :friends, class_name: :Friendship, foreign_key: :friend_id
 
   def my_friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.state == 'confirmed' }
-    friends_array + friends.map { |friendship| friendship.user if friendship.state == 'confirmed' } # rubocop:disable Lint/Void
-    friends_array.compact
+    friends_array = []
+    friendships.map { |friendship| friends_array << friendship.friend if friendship.state == 'confirmed' }
+    friends_array + friends.map { |friendship| friends_array << friendship.user if friendship.state == 'confirmed' } # rubocop:disable Lint/Void
+    friends_array
   end
 
   # Users who have yet to confirm friend requests
   def pending_friends
-    friends.map { |friendship| friendship.user if friendship.state == 'request-sent' }.compact
+    friendships.map { |friendship| friendship.friend if friendship.state == 'pending' }.compact
   end
 
-  # Users who have requested to be friends
   def friend_requests
     friends.map { |friendship| friendship.user if friendship.state == 'pending' }.compact
   end
