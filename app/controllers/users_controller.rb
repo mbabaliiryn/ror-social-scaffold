@@ -22,12 +22,8 @@ class UsersController < ApplicationController
   def accept
     @friendship = Friendship.find_by(friend_id: current_user.id, user_id: params[:id])
     friendship_params = params.require(:friendship).permit(:state)
-    if @friendship.update(friendship_params)
-      redirect_to user_path(current_user.id), notice: 'Friend Successfully Accepted!'
-    else
-      flash[:alert] = "An error Occurred!"
-      redirect_to users_path
-    end
+    @friendship.update(friendship_params)
+    redirect_to user_path(current_user.id), notice: 'Friend Successfully Accepted!'
   end
 
   def reject
