@@ -40,5 +40,38 @@ RSpec.feature 'Users', type: :feature do
       expect(page).to have_content('Request Sent!')
     end
   end
+  feature 'Accepting Pending Friend Requests' do
+    background do
+      User.create!(name: 'Greg', email: 'greg@email.com', password: 'password', password_confirmation: 'password')
+      User.create!(name: 'Paul', email: 'paul@email.com', password: 'password', password_confirmation: 'password')
+    end
+    scenario 'can accept a pending frienship request from another user' do
+      login_user('greg@email.com', 'password')
+      visit users_path
+      page.first('.invite').click
+      logout_user
+      login_user('paul@email.com', 'password')
+      visit users_path
+      page.first('.accept').click
+      expect(page).to have_content('Friend Successfully Accepted!')
+    end
+  end
+
+  feature 'Rejecting Pending Friend Requests' do
+    background do
+      User.create!(name: 'Greg', email: 'greg@email.com', password: 'password', password_confirmation: 'password')
+      User.create!(name: 'Paul', email: 'paul@email.com', password: 'password', password_confirmation: 'password')
+    end
+    scenario 'can reject a pending frienship request from another user' do
+      login_user('greg@email.com', 'password')
+      visit users_path
+      page.first('.invite').click
+      logout_user
+      login_user('paul@email.com', 'password')
+      visit users_path
+      page.first('.reject').click
+      expect(page).to have_content('Removed!')
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength

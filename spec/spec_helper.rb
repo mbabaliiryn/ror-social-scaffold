@@ -110,8 +110,7 @@ def login_user(email, password)
 end
 
 def logout_user
-  visit root_path
-  click_button 'sign_out'
+  click_link 'Sign out'
 end
 
 def create_post(content)
