@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.feature 'Comments', type: :feature do
   feature 'Creating Comment' do
     background do
-      User.new(name: 'Greg', email: 'gregz@email.com', password: 'password', password_confirmation: 'password')
+      User.create!(name: 'Greg', email: 'greg@email.com', password: 'password', password_confirmation: 'password')
     end
 
     scenario 'with valid content' do
-      login_user('gregz@email.com', 'password')
+      login_user('greg@email.com', 'password')
+      create_post("this is a post")
       visit posts_path
       page.first('#comment_content').set('this is a test comment')
       page.first('.btn-secondary').click
@@ -17,7 +18,8 @@ RSpec.feature 'Comments', type: :feature do
     end
 
     scenario 'with invalid content' do
-      login_user('gregz@email.com', 'password')
+      login_user('greg@email.com', 'password')
+      create_post("this is a post")
       visit posts_path
       page.first('#comment_content').set(nil)
       page.first('.btn-secondary').click

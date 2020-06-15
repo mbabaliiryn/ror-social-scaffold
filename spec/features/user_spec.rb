@@ -14,25 +14,26 @@ RSpec.feature 'Users', type: :feature do
   end
   feature 'Signing In' do
     background do
-      User.new(name: 'Greg', email: 'gregz@email.com', password: 'password', password_confirmation: 'password')
+      User.create!(name: 'Greg', email: 'greg@email.com', password: 'password', password_confirmation: 'password')
     end
     scenario 'with correct credentials' do
-      login_user('gregz@email.com', 'password')
+      login_user('greg@email.com', 'password')
       expect(current_path).to eq('/')
       expect(page).to have_content('Signed in successfully.')
     end
     scenario 'without correct credentials' do
-      login_user('greg@email.com', 'pasword')
+      login_user('gregz@email.com', 'pasword')
       expect(current_path).to eq('/users/sign_in')
       expect(page).to have_content('Invalid Email or password.')
     end
   end
   feature 'Sending Friend Requests' do
     background do
-      User.new(name: 'Greg', email: 'gregz@email.com', password: 'password', password_confirmation: 'password')
+      User.create!(name: 'Greg', email: 'greg@email.com', password: 'password', password_confirmation: 'password')
+      User.create!(name: 'Paul', email: 'paul@email.com', password: 'password', password_confirmation: 'password')
     end
     scenario 'can invite another user to frienship' do
-      login_user('gregz@email.com', 'password')
+      login_user('greg@email.com', 'password')
       visit users_path
       page.first('.invite').click
       expect(current_path).to eq('/users')

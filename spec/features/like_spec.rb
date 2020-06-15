@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.feature 'Likes', type: :feature do
   feature 'Liking and Disliking Posts' do
     background do
-      User.new(name: 'Greg', email: 'gregz@email.com', password: 'password', password_confirmation: 'password')
+      User.create!(name: 'Greg', email: 'greg@email.com', password: 'password', password_confirmation: 'password')
     end
     scenario 'can like a post' do
-      login_user('gregz@email.com', 'password')
+      login_user('greg@email.com', 'password')
+      create_post("this is a post")
       visit posts_path
       page.first('.like').click
 
@@ -15,8 +16,10 @@ RSpec.feature 'Likes', type: :feature do
     end
 
     scenario 'can dislike a post' do
-      login_user('gregz@email.com', 'password')
+      login_user('greg@email.com', 'password')
+      create_post("this is a post")
       visit posts_path
+      page.first('.like').click
       page.first('.dislike').click
 
       expect(current_path).to eq('/posts')

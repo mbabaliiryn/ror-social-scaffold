@@ -109,6 +109,11 @@ def login_user(email, password)
   click_button 'Log in'
 end
 
+def logout_user
+  visit root_path
+  click_button 'sign_out'
+end
+
 def create_post(content)
   visit posts_path
   find('#post_content').set(content)

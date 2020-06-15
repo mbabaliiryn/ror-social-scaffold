@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.feature 'Posts', type: :feature do
   feature 'Creating Post' do
     background do
-      User.new(name: 'Greg', email: 'gregz@email.com', password: 'password', password_confirmation: 'password')
+      User.create!(name: 'Greg', email: 'greg@email.com', password: 'password', password_confirmation: 'password')
     end
     scenario 'with valid params' do
-      login_user('gregz@email.com', 'password')
+      login_user('greg@email.com', 'password')
       create_post('this is a test')
 
       expect(current_path).to eq('/posts')
@@ -14,7 +14,7 @@ RSpec.feature 'Posts', type: :feature do
     end
 
     scenario 'with invalid params' do
-      login_user('gregz@email.com', 'password')
+      login_user('greg@email.com', 'password')
       create_post(nil)
 
       expect(current_path).to eq('/posts')
