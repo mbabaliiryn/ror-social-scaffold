@@ -47,6 +47,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'database_cleaner-active_record'
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'launchy'
   gem 'shoulda-matchers'

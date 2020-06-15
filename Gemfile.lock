@@ -77,6 +77,10 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    database_cleaner (1.8.5)
+    database_cleaner-active_record (1.8.0)
+      activerecord
+      database_cleaner (~> 1.8.0)
     devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -251,6 +255,7 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.2)
+  database_cleaner-active_record
   devise
   factory_bot_rails (~> 5.2)
   faker!
