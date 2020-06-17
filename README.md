@@ -87,8 +87,8 @@ Give a ⭐️ if you like this project!
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[product-screenshot]: images/scraper.gif
-[screenshot-url]: https://repl.it/@PhillipUg/github-scraper
+[product-screenshot]: app/assets/images/social-media.gif
+[screenshot-url]: #
 
 ## 📝 License
 
