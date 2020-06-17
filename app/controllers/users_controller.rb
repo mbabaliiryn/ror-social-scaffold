@@ -20,11 +20,11 @@ class UsersController < ApplicationController
   end
 
   def accept
-    @friendship1 = Friendship.find_by(friend_id: params[:id], user_id: current_user.id)
-    @friendship2 = Friendship.find_by(friend_id: current_user.id, user_id: params[:id])
+    @friendship1 = Friendship.find_by(friend_id: current_user.id, user_id: params[:id])
+    @friendship2 = Friendship.new(friend_id: params[:id], user_id: current_user.id, state: 'confirmed')
     friendship_params = params.require(:friendship).permit(:state)
     @friendship1.update(friendship_params)
-    @friendship2.update(friendship_params)
+    @friendship2.save
     redirect_to user_path(current_user.id), notice: 'Friend Successfully Accepted!'
   end
 
