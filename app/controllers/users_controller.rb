@@ -20,15 +20,19 @@ class UsersController < ApplicationController
   end
 
   def accept
-    @friendship = Friendship.find_by(friend_id: current_user.id, user_id: params[:id])
+    @friendship1 = Friendship.find_by(friend_id: params[:id], user_id: current_user.id)
+    @friendship2 = Friendship.find_by(friend_id: current_user.id, user_id: params[:id])
     friendship_params = params.require(:friendship).permit(:state)
-    @friendship.update(friendship_params)
-    redirect_to user_path(current_user.id), notice: 'Friend Successfully Accepted!'
+    @friendship1.update(friendship_params)
+    @friendship2.update(friendship_params)
+    redirect_to user_path(current_user.id), notice: "Friend Successfully Accepted!"
   end
 
   def reject
-    @friendship = Friendship.find_by(friend_id: current_user.id, user_id: params[:id])
-    @friendship.destroy
-    redirect_to user_path(current_user.id), alert: 'Removed!'
+    @friendship1 = Friendship.find_by(friend_id: params[:id], user_id: current_user.id)
+    @friendship2 = Friendship.find_by(friend_id: current_user.id, user_id: params[:id])
+    @friendship1.destroy
+    @friendship2.destroy
+    redirect_to user_path(current_user.id), alert: "Removed!"
   end
 end
