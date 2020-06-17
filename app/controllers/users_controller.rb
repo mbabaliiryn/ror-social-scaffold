@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     friendship_params = params.require(:friendship).permit(:state)
     @friendship1.update(friendship_params)
     @friendship2.update(friendship_params)
-    redirect_to user_path(current_user.id), notice: "Friend Successfully Accepted!"
+    redirect_to user_path(current_user.id), notice: 'Friend Successfully Accepted!'
   end
 
   def reject
@@ -33,6 +33,6 @@ class UsersController < ApplicationController
     @friendship2 = Friendship.find_by(friend_id: current_user.id, user_id: params[:id])
     @friendship1.destroy
     @friendship2.destroy
-    redirect_to user_path(current_user.id), alert: "Removed!"
+    redirect_to user_path(current_user.id), alert: 'Removed!'
   end
 end
