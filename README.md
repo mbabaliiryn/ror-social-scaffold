@@ -2,10 +2,6 @@
 
 > This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
 
-## How it works
-
-[![Product Name Screen Shot][product-screenshot]][screenshot-url]
-
 ## Built With
 
 - Ruby v2.7.0
@@ -13,7 +9,7 @@
 
 ## Live Demo
 
-[Social Media App](https://social-media-phillipug.herokuapp.com)
+TBA
 
 
 ## Getting Started
@@ -61,14 +57,13 @@ Open `http://localhost:3000/` in your browser.
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
+### Deployment
+
+TBA
+
 ## Authors
 
-👤 **Phillip Musiime**
-
-- LinkedIn: [Phillip Musiime](https://www.linkedin.com/in/phillip-musiime-74657019a/)
-- GitHub: [PhillipUg](https://github.com/PhillipUg)
-- Twitter: [@Phillip_Ug](https://twitter.com/Phillip_Ug)
-- E-mail: phillipmusiime@gmail.com
+TBA
 
 ## 🤝 Contributing
 
@@ -86,8 +81,5 @@ TBA
 
 ## 📝 License
 
-MIT Licence
+TBA
 
-<!-- MARKDOWN LINKS & IMAGES -->
-[product-screenshot]: assets/images/social-media.gif
-[screenshot-url]: #
