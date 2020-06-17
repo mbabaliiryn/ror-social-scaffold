@@ -29,10 +29,8 @@ class UsersController < ApplicationController
   end
 
   def reject
-    @friendship1 = Friendship.find_by(friend_id: params[:id], user_id: current_user.id)
-    @friendship2 = Friendship.find_by(friend_id: current_user.id, user_id: params[:id])
-    @friendship1.destroy
-    @friendship2.destroy
+    @friendship = Friendship.find_by(friend_id: current_user.id, user_id: params[:id])
+    @friendship.destroy
     redirect_to user_path(current_user.id), alert: 'Removed!'
   end
 end
