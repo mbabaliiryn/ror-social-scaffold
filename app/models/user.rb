@@ -13,10 +13,9 @@ class User < ApplicationRecord
   has_many :friends, class_name: :Friendship, foreign_key: :friend_id
 
   def my_friends
-    friends_array = []
-    friendships.map { |friendship| friends_array << friendship.friend if friendship.state == 'confirmed' }
-    friends_array + friends.map { |friendship| friends_array << friendship.user if friendship.state == 'confirmed' } # rubocop:disable Lint/Void
-    friends_array
+    friends_array = friendships.map { |friendship| friendship.friend if friendship.state == 'confirmed' }
+    friends_array + friends.map { |friendship| friendship.user if friendship.state == 'confirmed' } # rubocop:disable Lint/Void
+    friends_array.compact
   end
 
   # Users who have yet to confirm friend requests
