@@ -85,8 +85,6 @@ Give a ⭐️ if you like this project!
 - [microverse](www.microverse.org)
 - [The Odin Project](www.theodinproject.org)
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [product-screenshot]: app/assets/images/social-media.gif
 [screenshot-url]: #
 
