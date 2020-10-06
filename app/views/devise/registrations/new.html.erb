@@ -4,13 +4,49 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :username %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "name", id: :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :FirstName %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", id: :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :LastName %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", id: :last_name %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autocomplete: "email", id: :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nationality %><br />
+    <%= f.text_field :nationality, autocomplete: "nationality", id: :nationality %>
+  </div>
+
+   <div class="field">
+    <%= f.label :contact %><br />
+    <%= f.text_field :contact, autocomplete: "contact", id: :contact %>
+  </div>
+
+
+   <div class="field w-50">
+    <%= f.label :UserType %><br />
+    <%= f.select :user_type, [ 'Organisation','Company','Individual' ], :prompt => 'Select One' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Bio %><br />
+    <%= f.text_area :bio, autocomplete: "bio", id: :bio %>
+  </div>
+
+  <div class="field">
+    <%= f.label :DOB %><br />
+    <%= f.date_field :DOB, autocomplete: "DOB", id: :DOB %>
   </div>
 
   <div class="field">
