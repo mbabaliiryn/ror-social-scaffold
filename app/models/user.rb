@@ -26,4 +26,7 @@ class User < ApplicationRecord
   def friend_requests
     friends.map { |friendship| friendship.user if friendship.state == 'pending' }.compact
   end
+
+  has_many :votes
+  has_many :liked_posts, through: :votes
 end

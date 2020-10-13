@@ -15,4 +15,15 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post, class: 'like')
     end
   end
+
+  def vote_or_unvote_btn(post)
+    vote = Vote.find_by(post: post, user: current_user)
+    if vote
+      link_to('Dislike!', post_vote_path(id: like.id, post_id: post.id), method: :delete, class: 'dislike')
+    else
+      link_to('Vote!', post_likes_path(post_id: post.id), method: :post, class: 'like')
+    end
+  end
+
+
 end

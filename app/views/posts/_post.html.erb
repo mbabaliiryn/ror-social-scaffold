@@ -4,6 +4,11 @@
     <div class='post-attribution' >
       <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
     </div>
+      <div class='post-liking'>
+      <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
+      <%= vote_or_unvote_btn(post) %>
+      <small><%= pluralize(post.votes.count, 'vote') %></small>
+    </div><br/>
     <div class='post-liking'>
       <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
       <%= like_or_dislike_btn(post) %>
