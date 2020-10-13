@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
+    resources :votes, only: [:create, :destroy]
   end
 
   get :invite, to: "users#invite", as: 'invite'

@@ -3,9 +3,9 @@ class VotesController < ApplicationController
         @vote = current_user.votes.new(post_id: params[:post_id])
     
         if @vote.save
-          redirect_to posts_path, notice: 'You liked a post.'
+          redirect_to posts_path, notice: 'You voted a post.'
         else
-          redirect_to posts_path, alert: 'You cannot like this post.'
+          redirect_to posts_path, alert: 'You cannot unvote this post.'
         end
       end
     
@@ -13,9 +13,9 @@ class VotesController < ApplicationController
         vote = Vote.find_by(id: params[:id], user: current_user, post_id: params[:post_id])
         if vote
           vote.destroy
-          redirect_to posts_path, notice: 'You disliked a post.'
+          redirect_to posts_path, notice: 'You unvoted a post.'
         else
-          redirect_to posts_path, alert: 'You cannot dislike post that you did not like before.'
+          redirect_to posts_path, alert: 'You cannot unvote post that you did not vote before.'
         end
       end
 end
