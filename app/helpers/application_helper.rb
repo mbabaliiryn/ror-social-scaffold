@@ -16,12 +16,12 @@ module ApplicationHelper
     end
   end
 
-  def vote_or_unvote_btn(post)
+  def upvote_or_downvote_btn(post)
     vote = Vote.find_by(post: post, user: current_user)
     if vote
-      link_to('Unvote!', post_vote_path(id: vote.id, post_id: post.id), method: :delete, class: 'dislike')
+      link_to('Downvote!', post_vote_path(id: vote.id, post_id: post.id), method: :delete, class: 'dislike')
     else
-      link_to('Vote!', post_votes_path(post_id: post.id), method: :post, class: 'like')
+      link_to('Upvote!', post_votes_path(post_id: post.id), method: :post, class: 'like')
     end
   end
 

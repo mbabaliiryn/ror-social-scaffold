@@ -1,12 +1,12 @@
 <li class="post">
   <div>
-    <%= video_tag url_for(post.video), controls: "", class: "" if post.video.attached?%>
-    <div class='post-attribution' >
+   <div class='post-attribution' >
       <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
     </div>
+    <%= video_tag url_for(post.video), controls: "", class: "video" if post.video.attached?%>
+   
       <div class='post-liking'>
-      <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
-      <%= vote_or_unvote_btn(post) %>
+      <%= upvote_or_downvote_btn(post) %>
       <small><%= pluralize(post.votes.count, 'vote') %></small>
     </div><br/>
     <div class='post-liking'>
