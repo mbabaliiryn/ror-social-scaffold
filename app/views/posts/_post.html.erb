@@ -1,5 +1,6 @@
 <li class="post">
   <div>
+  <%= url_for(@post.video)  if @post.video.attached? %>
     <div class='post-attribution' >
       <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
     </div>
