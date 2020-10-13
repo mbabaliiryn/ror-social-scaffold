@@ -1,7 +1,8 @@
 <%= form_for(@post) do |form| %>
   <%= form.label :content %>
   <%= form.text_field :content, id: :post_content, class: 'form-control', placeholder: 'Add New Post' %>
-    <%= form.file_field :video, class: 'form-control', direct_upload: true  %>
+  <%= form.label :video %>
+  <%= form.file_field :video, class: 'form-control', direct_upload: true  %>
   <% if @post.errors.full_messages.any? %>
     <p class="errors">
       <%= "Post could not be saved. #{@post.errors.full_messages.join('. ')}" %>
