@@ -16,7 +16,7 @@
     </div>
   </div>
   <p class="post-content">
-   <%= link_to "Delete", posts_path(@post), method: :delete, data: {confirm: "Really delete the article?"}, class: "delete-path" %>
+   <%= link_to "Delete", post_path(post), method: :delete, data: {confirm: "Really delete the article?"}, class: "delete-path" %>
     <%= post.content %> - 
     <small>(<%= pluralize(post.comments.count, 'comment') %>)</small>
   </p>
