@@ -1,0 +1,9 @@
+development:
+  cloud_name: "dexh71asz"
+  api_key: "662192544675175"
+  api_secret: "PNYKYTPzsjUfbWq3ezCfXHRk474"
+
+production:
+  cloud_name: "dexh71asz"
+  api_key: "662192544675175"
+  api_secret: "PNYKYTPzsjUfbWq3ezCfXHRk474"
